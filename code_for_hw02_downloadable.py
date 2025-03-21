@@ -609,12 +609,16 @@ test_xval_learning_alg(xval_learning_alg,perceptron)
 #For problem 10, here is an example of how to use gen_flipped_lin_separable, in this case with a flip probability of 50%
 perceptron_score = 0
 averaged_perceptron_score = 0
+cumulative_perceptron_score = 0
 for i in range(100):
-    perceptron_score = perceptron_score + eval_learning_alg_modified(perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
-    averaged_perceptron_score = averaged_perceptron_score + eval_learning_alg_modified(averaged_perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+    perceptron_score = perceptron_score + eval_learning_alg(perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+    averaged_perceptron_score = averaged_perceptron_score + eval_learning_alg(averaged_perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+    cumulative_perceptron_score = cumulative_perceptron_score + eval_learning_alg(perceptron_cumulative, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+
     if i %10 == 0:
         print(i)
 
 print(perceptron_score/100)
 print(averaged_perceptron_score/100)
+print(cumulative_perceptron_score/100)
 
