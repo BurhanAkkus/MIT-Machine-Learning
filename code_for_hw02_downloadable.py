@@ -487,7 +487,7 @@ def perceptron(data, labels, params={}, hook=None):
 
     (d, n) = data.shape
 
-    theta = np.zeros((d, 1));
+    theta = np.zeros((d, 1))
     theta_0 = np.zeros((1, 1))
     for t in range(T):
         for i in range(n):
@@ -528,8 +528,23 @@ test_perceptron(perceptron)
 def averaged_perceptron(data, labels, params={}, hook=None):
     # if T not in params, default to 100
     T = params.get('T', 100)
-    # Your implementation here
-    pass
+    (d, n) = data.shape
+
+    theta = np.zeros((d, 1))
+    theta_0 = np.zeros((1, 1))
+    thetas = np.zeros((d,1))
+    theta_0s = np.zeros((1,1))
+    for t in range(T):
+        for i in range(n):
+            x = data[:, i:i + 1]
+            y = labels[:, i:i + 1]
+            if y * positive(x, theta, theta_0) <= 0.0:
+                theta = theta + y * x
+                theta_0 = theta_0 + y
+                if hook: hook((theta, theta_0))
+            thetas = thetas + theta
+            theta_0s = theta_0s + theta_0
+    return thetas / (n * T), theta_0s / (n * T)
 
 # Visualization of Averaged Perceptron:
 '''
@@ -539,29 +554,67 @@ for datafn in (super_simple_separable, xor, xor_more, big_higher_dim_separable):
 '''
 
 #Test Cases:
-#test_averaged_perceptron(averaged_perceptron)
+test_averaged_perceptron(averaged_perceptron)
 
 def eval_classifier(learner, data_train, labels_train, data_test, labels_test):
-    pass
+    theta,theta_0 = learner(data_train,labels_train)
+    (d, n) = data_test.shape
+    return score(data_test,labels_test,theta,theta_0) / n
 
 #Test cases:
-#test_eval_classifier(eval_classifier,perceptron)
+test_eval_classifier(eval_classifier,perceptron)
 
 
 def eval_learning_alg(learner, data_gen, n_train, n_test, it):
-    pass
+    suc_rate_cumulative = 0
+    for i in range(it):
+        data_train,labels_train = data_gen(n_train)
+        theta,theta_0 = learner(data_train,labels_train)
+        data_test,labels_test = data_gen(n_test)
+        success_rate =  score(data_test,labels_test,theta,theta_0) / n_test
+        suc_rate_cumulative += success_rate
+    return  suc_rate_cumulative / it
+
+def eval_learning_alg_modified(learner, data_gen, n_train, n_test, it):
+    suc_rate_cumulative = 0
+    for i in range(it):
+        data_train,labels_train = data_gen(n_train)
+        theta,theta_0 = learner(data_train,labels_train)
+        success_rate =  score(data_train,labels_train,theta,theta_0) / n_test
+        suc_rate_cumulative += success_rate
+    return  suc_rate_cumulative / it
 
 #Test cases:
-#test_eval_learning_alg(eval_learning_alg,perceptron)
+test_eval_learning_alg(eval_learning_alg,perceptron)
 
 
 def xval_learning_alg(learner, data, labels, k):
-    pass
+    split_data = np.array_split(data,k,axis = 1)
+    split_labels = np.array_split(labels,k, axis = 1)
+    scores_cumulative = 0
+    for i in range(k):
+        data_train = np.concatenate(split_data[:i] + split_data[i+1:], axis=1)
+        labels_train = np.concatenate(split_labels[:i] + split_labels[i+1:], axis=1)
+        data_test = split_data[i]
+        labels_test = split_labels[i]
+        theta,theta_0 = learner(data_train,labels_train)
+        test_score = score(data_test,labels_test,theta,theta_0) / labels_test.size
+        scores_cumulative = scores_cumulative + test_score
+    return scores_cumulative / k
 
 #Test cases:
-#test_xval_learning_alg(xval_learning_alg,perceptron)
+test_xval_learning_alg(xval_learning_alg,perceptron)
 
 
 #For problem 10, here is an example of how to use gen_flipped_lin_separable, in this case with a flip probability of 50%
-#print(eval_learning_alg(perceptron, gen_flipped_lin_separable(pflip=.5), 20, 20, 5))
+perceptron_score = 0
+averaged_perceptron_score = 0
+for i in range(100):
+    perceptron_score = perceptron_score + eval_learning_alg_modified(perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+    averaged_perceptron_score = averaged_perceptron_score + eval_learning_alg_modified(averaged_perceptron, gen_flipped_lin_separable(pflip=.1), 20, 20, 5)
+    if i %10 == 0:
+        print(i)
+
+print(perceptron_score/100)
+print(averaged_perceptron_score/100)
 
