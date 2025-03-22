@@ -1,6 +1,9 @@
 # Implement perceptron, average perceptron, and pegasos
+import time
+
 import numpy as np
 import matplotlib.pyplot as plt
+import pytest
 from matplotlib import colors
 import pdb
 import itertools
@@ -194,6 +197,20 @@ def xor_more():
     y = np.array([[1, 1, -1, -1, 1, 1, -1, -1]])
     return X, y
 
+def Q1():
+    X = np.array([[200, 800, 200, 800],
+                  [0.2, 0.2, 0.8, 0.8]])
+    y = np.array([[-1, -1, 1, 1]])
+    return X, y
+
+def Q1_2():
+    X = np.array([[0.2, 0.8, 0.2, 0.8],
+                  [0.2, 0.2, 0.8, 0.8]])
+    y = np.array([[-1, -1, 1, 1]])
+    return X, y
+
+
+
 ######################################################################
 #   Tests for part 2:  features
 
@@ -211,14 +228,14 @@ def test_linear_classifier_with_features(dataFun, learner, feature_fun,
                 ax = ax)
             plot_data(raw_data, labels, ax)
             plt.pause(0.05)
-            print('th', th.T, 'th0', th0)
-            if pause: input('press enter here to continue:')
+            #print('th', th.T, 'th0', th0)
     else:
         hook = None
     th, th0 = learner(data, labels, hook = hook)
     if hook: hook((th, th0))
     print("Final score", int(score(data, labels, th, th0)))
     print("Params", np.transpose(th), th0)
+    return int(score(data, labels, th, th0)) == data.shape[1]
 
 def mul(seq):
     return functools.reduce(operator.mul, seq, 1)
@@ -243,7 +260,7 @@ def make_polynomial_feature_fun(order):
 def test_with_features(dataFun, order = 2, draw=True, pause=True):
     test_linear_classifier_with_features(
         dataFun,                        # data
-        perceptron,                     # learner
+        perceptron_with_break,                     # learner
         make_polynomial_feature_fun(order), # feature maker
         draw=draw,
         pause=pause)
@@ -266,9 +283,31 @@ def perceptron(data, labels, params = {}, hook = None):
                 theta = theta + y * x
                 theta_0 = theta_0 + y
                 if hook: hook((theta, theta_0))
+
+    print("MISTAKE COUNT " + str(m))
     return theta, theta_0
 
-
+def perceptron_with_break(data, labels, params = {}, hook = None):
+    T = params.get('T', 100)
+    (d, n) = data.shape
+    m = 0
+    theta = np.zeros((d, 1)); theta_0 = np.zeros((1, 1))
+    for t in range(T):
+        if(t%10 == 0):
+            print(t)
+        m_old = m
+        for i in range(n):
+            x = data[:,i:i+1]
+            y = labels[:,i:i+1]
+            if y * positive(x, theta, theta_0) <= 0.0:
+                m += 1
+                theta = theta + y * x
+                theta_0 = theta_0 + y
+                if hook: hook((theta, theta_0))
+        if(m_old == m):
+            break
+    print("MISTAKE COUNT " + str(m))
+    return theta, theta_0
 
 
 ######################################################################
@@ -280,6 +319,43 @@ def one_hot_internal(x, k):
     # Set an entry to 1
     v[x-1, 0] = 1
     return v
+
+
+def Q2_one_hot():
+    # Orijinal veriler
+    X = np.array([[1, 2, 3, 4, 5, 6]])
+    y = np.array([[1, 1, -1, -1, 1, 1]])
+
+    # k, one_hot vektörünün boyutu;
+    # burada en yüksek kategori değeri 5 olduğu için k = 5
+    k = 5
+
+    # Her bir örnek için one_hot fonksiyonunu uygula.
+    # X.flatten() → [2, 3, 4, 5]
+    one_hot_list = [one_hot_internal(int(x), 6) for x in X.flatten()]
+
+    # Tüm one_hot vektörlerini sütunlar halinde birleştir.
+    X_one_hot = np.concatenate(one_hot_list, axis=1)
+
+    return X_one_hot, y
+
+
+
+'''data, labels = Q2_one_hot()
+for i in range(10):
+    print(i)
+    th,th0 = perceptron(data,labels,{'T':10**i})
+    skor = score(data,labels,th,th0)
+    print(skor)
+    if(skor == data.shape[1]):
+        print("" + str(i) + "TAM COZDU")
+        print(th , th0)
+        break
+'''
+@pytest.fixture
+def sub():
+    # Örneğin, one_hot fonksiyonunu döndürebilirsiniz:
+    return one_hot_internal
 
 def test_one_hot(sub):
     if one_hot_internal(3, 5).tolist() == sub(3, 5).tolist() and one_hot_internal(4, 7).tolist() == sub(4, 7).tolist():
@@ -295,4 +371,12 @@ print("Also loaded: perceptron, one_hot_internal, test_one_hot")
 
 ######################################################################
 #   Example for part 3B) test_with_features()
-#test_with_features(super_simple_separable, 2, draw=True, pause=True)
+data_sets = [super_simple_separable_through_origin, super_simple_separable, xor,xor_more]
+solved = [False] * len(data_sets)
+
+for idx,data in enumerate(data_sets):
+    if(solved[idx]):
+        continue
+    print("#######################")
+
+test_with_features(xor_more, 3, draw=True, pause=True)
