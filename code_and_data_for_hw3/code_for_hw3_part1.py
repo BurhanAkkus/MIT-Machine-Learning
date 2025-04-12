@@ -270,7 +270,7 @@ def test_with_features(dataFun, order = 2, draw=True, pause=True):
 # labels is dimension 1 by n
 # T is a positive integer number of steps to run
 def perceptron(data, labels, params = {}, hook = None):
-    T = params.get('T', 100)
+    T = params.get('T', 50)
     (d, n) = data.shape
     m = 0
     theta = np.zeros((d, 1)); theta_0 = np.zeros((1, 1))
@@ -371,6 +371,7 @@ print("Also loaded: perceptron, one_hot_internal, test_one_hot")
 
 ######################################################################
 #   Example for part 3B) test_with_features()
+'''
 data_sets = [super_simple_separable_through_origin, super_simple_separable, xor,xor_more]
 solved = [False] * len(data_sets)
 
@@ -380,3 +381,4 @@ for idx,data in enumerate(data_sets):
     print("#######################")
 
 test_with_features(xor_more, 3, draw=True, pause=True)
+'''

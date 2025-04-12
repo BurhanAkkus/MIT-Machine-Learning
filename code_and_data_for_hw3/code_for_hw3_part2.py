@@ -145,7 +145,7 @@ def signed_dist(x, th, th0):
 # T is a positive integer number of steps to run
 def perceptron(data, labels, params = {}, hook = None):
     # if T not in params, default to 50
-    T = params.get('T', 50)
+    T = params.get('T', 1)
     (d, n) = data.shape
 
     theta = np.zeros((d, 1)); theta_0 = np.zeros((1, 1))
@@ -160,7 +160,7 @@ def perceptron(data, labels, params = {}, hook = None):
     return theta, theta_0
 
 def averaged_perceptron(data, labels, params = {}, hook = None):
-    T = params.get('T', 100)
+    T = params.get('T', 50)
     (d, n) = data.shape
 
     theta = np.zeros((d, 1)); theta_0 = np.zeros((1, 1))
@@ -187,11 +187,11 @@ def positive(x, th, th0):
 def score(data, labels, th, th0):
     return np.sum(positive(data, th, th0) == labels)
 
-def eval_classifier(learner, data_train, labels_train, data_test, labels_test):
-    th, th0 = learner(data_train, labels_train)
+def eval_classifier(learner, data_train, labels_train, data_test, labels_test, params={}):
+    th, th0 = learner(data_train, labels_train,params)
     return score(data_test, labels_test, th, th0)/data_test.shape[1]
 
-def xval_learning_alg(learner, data, labels, k):
+def xval_learning_alg(learner, data, labels, k, params={}):
     _, n = data.shape
     idx = list(range(n))
     np.random.seed(0)
@@ -208,7 +208,7 @@ def xval_learning_alg(learner, data, labels, k):
         data_test = np.array(s_data[i])
         labels_test = np.array(s_labels[i])
         score_sum += eval_classifier(learner, data_train, labels_train,
-                                              data_test, labels_test)
+                                              data_test, labels_test,params)
     return score_sum/k
 
 ######################################################################
@@ -269,6 +269,12 @@ def one_hot(v, entries):
     vec[entries.index(v)] = 1
     return vec
 
+def one_hot_manual(x, k):
+    vec = cv(np.zeros(k))
+    vec[x - 1] = 1
+    return vec
+
+one_hot_manual(5,8)
 # The class (mpg) added to the front of features
 def auto_data_and_labels(auto_data, features):
     features = [('mpg', raw)] + features
@@ -435,3 +441,22 @@ print("Tests: test_linear_classifier")
 print("Dataset tools: load_auto_data, std_vals, standard, raw, one_hot, auto_data_and_labels")
 print("               load_review_data, clean, extract_words, bag_of_words, extract_bow_feature_vectors")
 print("               load_mnist_data, load_mnist_single")
+'''
+def Q2():
+    X = np.array([one_hot_manual(x,4) for x in range(4)])
+    y = np.array([[1, 1, -1, -1]])
+    return X, y
+
+data, labels = Q2()
+for i in range(10):
+    print(i)
+    th,th0 = perceptron(data,labels,{'T':10**i})
+    skor = score(data,labels,th,th0)
+    print(skor)
+    if(skor == 4):
+        print("" + str(i) + "TAM COZDU")
+        print(th , th0)
+        break
+'''
+data = load_auto_data("../lab3_data/auto-mpg.tsv")
+print(len(data))
