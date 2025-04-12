@@ -1,7 +1,7 @@
 import pdb
 import numpy as np
 from sklearn.model_selection import cross_validate
-
+import pprint
 import code_for_hw3_part2 as hw3
 from code_and_data_for_hw3.code_for_hw3_part1 import perceptron,score,y
 from code_and_data_for_hw3.code_for_hw3_part2 import averaged_perceptron, xval_learning_alg, reverse_dict
@@ -256,27 +256,38 @@ def top_bottom_features(x):
 
     # Stack the two computed feature arrays into a (2, n_samples) array.
     return np.vstack((top_avg, bottom_avg)).T
-for (first,second) in [(0,1),(2,4),(6,8),(9,0)]:
-    d0 = mnist_data_all[first]["images"]
-    d1 = mnist_data_all[second]["images"]
-    y0 = np.repeat(-1, len(d0)).reshape(1,-1)
-    y1 = np.repeat(1, len(d1)).reshape(1,-1)
+results = []
+for first in range(10):
+    for second in range(10):
+        if(second == first):
+            continue
+        d0 = mnist_data_all[first]["images"]
+        d1 = mnist_data_all[second]["images"]
+        y0 = np.repeat(-1, len(d0)).reshape(1,-1)
+        y1 = np.repeat(1, len(d1)).reshape(1,-1)
 
-    # data goes into the feature computation functions
-    data = raw_mnist_features(np.vstack((d0, d1)))
+        # data goes into the feature computation functions
+        data = np.vstack((d0, d1))
+        data_row = row_average_features(data).reshape(data.shape[0], -1).T
+        data_column = col_average_features(data).reshape(data.shape[0], -1).T
+        data_top_bottom = top_bottom_features(data).T
+        print(data.shape)
+        # labels can directly go into the perceptron algorithm
+        labels = np.vstack((y0.T, y1.T)).T
+        #row_feats = row_average_features(data).reshape(data.shape[0], -1)   # (n,28)
+        #col_feats = col_average_features(data).reshape(data.shape[0], -1)     # (n,28)
+        #top_bottom_feats = top_bottom_features(data)                          # (n,2)
 
-    # labels can directly go into the perceptron algorithm
-    labels = np.vstack((y0.T, y1.T)).T
-    #row_feats = row_average_features(data).reshape(data.shape[0], -1)   # (n,28)
-    #col_feats = col_average_features(data).reshape(data.shape[0], -1)     # (n,28)
-    #top_bottom_feats = top_bottom_features(data)                          # (n,2)
-
-    # Combine all features horizontally:
-    #combined_features = np.hstack((row_feats, col_feats, top_bottom_feats)).T  # -> (n, 58)
-    #print("Combined features shape:", combined_features.shape)
-    print(first,second)
-    print(xval_learning_alg(perceptron,data,labels,10,{'T':50}))
-
+        # Combine all features horizontally:
+        #combined_features = np.hstack((row_feats, col_feats, top_bottom_feats)).T  # -> (n, 58)
+        #print("Combined features shape:", combined_features.shape)
+        print(first,second)
+        result = []
+        result.append(xval_learning_alg(perceptron,data_row,labels,10,{'T':50,'print':False}))
+        result.append(xval_learning_alg(perceptron,data_column,labels,10,{'T':50,'print':False}))
+        result.append(xval_learning_alg(perceptron,data_top_bottom,labels,10,{'T':50,'print':False}))
+        results.append(result)
+pprint.pprint(results)
 # use this function to evaluate accuracy
 #acc = hw3.get_classification_accuracy(raw_mnist_features(data), labels)
 
