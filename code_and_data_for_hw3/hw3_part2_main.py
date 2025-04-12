@@ -1,11 +1,35 @@
 import pdb
 import numpy as np
+from sklearn.model_selection import cross_validate
+
 import code_for_hw3_part2 as hw3
+from code_and_data_for_hw3.code_for_hw3_part1 import perceptron,score,y
+from code_and_data_for_hw3.code_for_hw3_part2 import averaged_perceptron, xval_learning_alg, reverse_dict
+
+
+def cross_validation_dataset(data,labels,cross_factor):
+    indices = np.random.permutation(data.shape[1])
+    data_shuffled = data[:, indices]
+    labels_shuffled = labels[:, indices]
+    num_examples = data_shuffled.shape[1]  # 391 örnek
+
+    # Test veri sayısını belirleriz. Bu değeri tamsayıya çeviriyoruz.
+    num_test = int(num_examples * cross_factor)
+
+    # Eğitim (train) veri sayısı: kalan örnekler
+    num_train = num_examples - num_test
+
+    # Eğitim ve test verilerini ayırıyoruz:
+    data_train = data_shuffled[:, :num_train]
+    label_train = labels_shuffled[:, :num_train]
+    data_test = data_shuffled[:, num_train:]
+    label_test = labels_shuffled[:, num_train:]
+    return data_train,label_train,data_test,label_test
 
 #-------------------------------------------------------------------------------
 # Auto Data
 #-------------------------------------------------------------------------------
-
+'''
 # Returns a list of dictionaries.  Keys are the column names, including mpg.
 auto_data_all = hw3.load_auto_data('auto-mpg.tsv')
 
@@ -22,8 +46,8 @@ features = [('cylinders', hw3.raw),
             ('origin', hw3.raw)]
 
 # Construct the standard data and label arrays
-auto_data, auto_labels = hw3.auto_data_and_labels(auto_data_all, features)
-print('auto data and labels shape', auto_data.shape, auto_labels.shape)
+auto_data_raw, auto_labels_raw = hw3.auto_data_and_labels(auto_data_all, features)
+print('auto data and labels shape', auto_data_raw.shape, auto_labels_raw.shape)
 
 if False:                               # set to True to see histograms
     import matplotlib.pyplot as plt
@@ -42,6 +66,68 @@ if False:                               # set to True to see histograms
 #-------------------------------------------------------------------------------
 # Analyze auto data
 #-------------------------------------------------------------------------------
+features = [('cylinders', hw3.one_hot),
+            ('displacement', hw3.standard),
+            ('horsepower', hw3.standard),
+            ('weight', hw3.standard),
+            ('acceleration', hw3.standard),
+            ## Drop model_year by default
+            ## ('model_year', hw3.raw),
+            ('origin', hw3.one_hot)]
+
+# Construct the standard data and label arrays
+auto_data, auto_labels = hw3.auto_data_and_labels(auto_data_all, features)
+
+if False:
+    import matplotlib.pyplot as plt
+    for feat in range(auto_data.shape[0]):
+        print('Feature', feat)
+        # Plot histograms in one window, different colors
+        plt.hist(auto_data[feat,auto_labels[0,:] > 0])
+        plt.hist(auto_data[feat,auto_labels[0,:] < 0])
+        plt.show()
+        # Plot histograms in two windows, different colors
+        fig,(a1,a2) = plt.subplots(nrows=2)
+        a1.hist(auto_data[feat,auto_labels[0,:] > 0])
+        a2.hist(auto_data[feat,auto_labels[0,:] < 0])
+        plt.show()
+
+
+
+datasets = [[auto_data_raw, auto_labels_raw], [auto_data,auto_labels]]
+Ts = [1,10,50,500]
+for dataset in datasets:
+    #for t in Ts:
+        data_train, label_train,data_test,label_test = cross_validation_dataset(dataset[0],dataset[1],0.10)
+        th, th0 = perceptron(data_train,label_train,params={'T':t})
+        accuracy1 = int(score(data_test, label_test, th, th0)) / label_test.shape[1]
+        th, th0 = averaged_perceptron(data_train,label_train,params={'T':t})
+        accuracy2 = int(score(data_test, label_test, th, th0)) / label_test.shape[1]
+        print("##############################" , t)
+        print("accuracy1: ", accuracy1 , " accuracy2: ", accuracy2)
+        accuracy1 = xval_learning_alg(perceptron,dataset[0],dataset[1],10)
+        accuracy2 = xval_learning_alg(averaged_perceptron,dataset[0],dataset[1],10)
+        print("##############################")
+        print("accuracy1: ", accuracy1, " accuracy2: ", accuracy2)
+features = [('cylinders', hw3.one_hot),
+            #('displacement', hw3.standard),
+            #('horsepower', hw3.standard),
+            ('weight', hw3.standard),
+            #('acceleration', hw3.standard),
+            ## Drop model_year by default
+            ## ('model_year', hw3.raw),
+            #('origin', hw3.one_hot)
+            ]
+
+# Construct the standard data and label arrays
+auto_data, auto_labels = hw3.auto_data_and_labels(auto_data_all, features)
+dataset = datasets[1]
+dataset_ = dataset[1]
+data_train, label_train,data_test,label_test = cross_validation_dataset(auto_data, auto_labels, 0.10)
+th, th0 = averaged_perceptron(data_train,label_train,params={'T':1})
+accuracy1 = int(score(data_test, label_test, th, th0)) / label_test.shape[1]
+print(accuracy1)
+print(th, th0)
 
 # Your code here to process the auto data
 
@@ -63,7 +149,35 @@ dictionary = hw3.bag_of_words(review_texts)
 review_bow_data = hw3.extract_bow_feature_vectors(review_texts, dictionary)
 review_labels = hw3.rv(review_label_list)
 print('review_bow_data and labels shape', review_bow_data.shape, review_labels.shape)
+if False:
+    for t in [1,10,50]:
+        accuracy1 = xval_learning_alg(perceptron,review_bow_data,review_labels,10, {'T' : t})
+        accuracy2 = xval_learning_alg(averaged_perceptron,review_bow_data,review_labels,10, {'T' : t})
+        print("##############################")
+        print(t," accuracy1: ", accuracy1, " accuracy2: ", accuracy2)
 
+data_train, label_train,data_test,label_test = cross_validation_dataset(review_bow_data, review_labels, 0.10)
+th, th0 = averaged_perceptron(data_train,label_train,params={'T':10})
+accuracy1 = int(score(data_test, label_test, th, th0)) / label_test.shape[1]
+print(accuracy1)
+print(th, th0)
+top10_indices = np.argsort(th.T)
+print(top10_indices[-10:])
+
+index_to_word = reverse_dict(dictionary)
+#print(index_to_word)
+#print(index_to_word[1])
+print([index_to_word[indis] for indis in top10_indices[0][-10:]])
+
+scores = y(review_bow_data,th,th0)
+most_positive_index = np.argmax(scores)
+most_negative_index = np.argmin(scores)
+print("Most positive review:")
+print("Index:", most_positive_index)
+print("Review Text:", review_texts[most_positive_index])
+print("\nMost negative review:")
+print("Index:", most_negative_index)
+print("Review Text:", review_texts[most_negative_index])
 #-------------------------------------------------------------------------------
 # Analyze review data
 #-------------------------------------------------------------------------------
@@ -88,6 +202,7 @@ Returns a dictionary formatted as follows:
 Where labels range from 0 to 9 and (m, n) images are represented
 by arrays of floats from 0 to 1
 """
+'''
 mnist_data_all = hw3.load_mnist_data(range(10))
 
 print('mnist_data_all loaded. shape of single images is', mnist_data_all[0]["images"][0].shape)
@@ -112,22 +227,21 @@ def raw_mnist_features(x):
 
 def row_average_features(x):
     """
-    This should either use or modify your code from the tutor questions.
-
-    @param x (n_samples,m,n) array with values in (0,1)
-    @return (m,n_samples) array where each entry is the average of a row
+    @param x (m,n) array with values in (0,1)
+    @return (m,1) array where each entry is the average of a row
     """
-    raise Exception("modify me!")
+    return np.array(np.sum(x, axis = 1) / x.shape[1]).reshape(-1,1)
+    pass
+
 
 
 def col_average_features(x):
     """
-    This should either use or modify your code from the tutor questions.
-
-    @param x (n_samples,m,n) array with values in (0,1)
-    @return (n,n_samples) array where each entry is the average of a column
+    @param x (m,n) array with values in (0,1)
+    @return (n,1) array where each entry is the average of a column
     """
-    raise Exception("modify me!")
+    return np.array(np.sum(x, axis=0) / x.shape[0]).reshape(-1, 1)
+    pass
 
 
 def top_bottom_features(x):
