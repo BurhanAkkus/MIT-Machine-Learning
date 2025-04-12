@@ -254,10 +254,27 @@ def top_bottom_features(x):
     and the second entry is the average of the bottom half of the image
     = rows floor(m/2) [inclusive] to m
     """
-    raise Exception("modify me!")
+    n_samples, m, n_cols = x.shape  # Here m = 28, n_cols = 28
+    # Compute the average for the top half of each image:
+    # Slicing: rows 0 to m//2 (0 to 14, which actually gives rows 0 to 13)
+    top_avg = np.mean(x[:, :m // 2, :], axis=(1, 2))  # result shape: (n_samples,)
+
+    # Compute the average for the bottom half of each image:
+    # Slicing: rows m//2 to the end (rows 14 to 27)
+    bottom_avg = np.mean(x[:, m // 2:, :], axis=(1, 2))  # result shape: (n_samples,)
+
+    # Stack the two computed feature arrays into a (2, n_samples) array.
+    return np.vstack((top_avg, bottom_avg))
+
+ans=top_bottom_features(np.array([
+    [[1,2,3],[4,5,6]],
+    [[3,9,2],[2,1,9]]
+]))
+print(ans)
+
 
 # use this function to evaluate accuracy
-acc = hw3.get_classification_accuracy(raw_mnist_features(data), labels)
+#acc = hw3.get_classification_accuracy(raw_mnist_features(data), labels)
 
 #-------------------------------------------------------------------------------
 # Analyze MNIST data
