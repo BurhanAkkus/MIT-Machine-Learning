@@ -207,31 +207,21 @@ mnist_data_all = hw3.load_mnist_data(range(10))
 
 print('mnist_data_all loaded. shape of single images is', mnist_data_all[0]["images"][0].shape)
 
-# HINT: change the [0] and [1] if you want to access different images
-d0 = mnist_data_all[0]["images"]
-d1 = mnist_data_all[1]["images"]
-y0 = np.repeat(-1, len(d0)).reshape(1,-1)
-y1 = np.repeat(1, len(d1)).reshape(1,-1)
-
-# data goes into the feature computation functions
-data = np.vstack((d0, d1))
-# labels can directly go into the perceptron algorithm
-labels = np.vstack((y0.T, y1.T)).T
 
 def raw_mnist_features(x):
     """
-    @param x (n_samples,m,n) array with values in (0,1)
-    @return (m*n,n_samples) reshaped array where each entry is preserved
+    @param x: (n_samples, m, n) array with values in (0,1), e.g., (n,28,28)
+    @return: (m*n, n_samples) reshaped array where each column is a flattened image.
     """
-    raise Exception("implement me!")
+    n_samples, m, n_cols = x.shape
+    return x.reshape(n_samples, m * n_cols).T
 
 def row_average_features(x):
     """
     @param x (m,n) array with values in (0,1)
     @return (m,1) array where each entry is the average of a row
     """
-    return np.array(np.sum(x, axis = 1) / x.shape[1]).reshape(-1,1)
-    pass
+    return np.mean(x, axis=2, keepdims=True)
 
 
 
@@ -240,8 +230,9 @@ def col_average_features(x):
     @param x (m,n) array with values in (0,1)
     @return (n,1) array where each entry is the average of a column
     """
-    return np.array(np.sum(x, axis=0) / x.shape[0]).reshape(-1, 1)
-    pass
+    col_avg = np.mean(x, axis=1)
+    # Reshape each image's result to be (n2, 1) for consistency; overall (n, n2, 1).
+    return col_avg.reshape(x.shape[0], x.shape[2], 1)
 
 
 def top_bottom_features(x):
@@ -264,14 +255,27 @@ def top_bottom_features(x):
     bottom_avg = np.mean(x[:, m // 2:, :], axis=(1, 2))  # result shape: (n_samples,)
 
     # Stack the two computed feature arrays into a (2, n_samples) array.
-    return np.vstack((top_avg, bottom_avg))
+    return np.vstack((top_avg, bottom_avg)).T
+for (first,second) in [(0,1),(2,4),(6,8),(9,0)]:
+    d0 = mnist_data_all[first]["images"]
+    d1 = mnist_data_all[second]["images"]
+    y0 = np.repeat(-1, len(d0)).reshape(1,-1)
+    y1 = np.repeat(1, len(d1)).reshape(1,-1)
 
-ans=top_bottom_features(np.array([
-    [[1,2,3],[4,5,6]],
-    [[3,9,2],[2,1,9]]
-]))
-print(ans)
+    # data goes into the feature computation functions
+    data = raw_mnist_features(np.vstack((d0, d1)))
 
+    # labels can directly go into the perceptron algorithm
+    labels = np.vstack((y0.T, y1.T)).T
+    #row_feats = row_average_features(data).reshape(data.shape[0], -1)   # (n,28)
+    #col_feats = col_average_features(data).reshape(data.shape[0], -1)     # (n,28)
+    #top_bottom_feats = top_bottom_features(data)                          # (n,2)
+
+    # Combine all features horizontally:
+    #combined_features = np.hstack((row_feats, col_feats, top_bottom_feats)).T  # -> (n, 58)
+    #print("Combined features shape:", combined_features.shape)
+    print(first,second)
+    print(xval_learning_alg(perceptron,data,labels,10,{'T':50}))
 
 # use this function to evaluate accuracy
 #acc = hw3.get_classification_accuracy(raw_mnist_features(data), labels)

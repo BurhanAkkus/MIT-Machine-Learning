@@ -283,8 +283,8 @@ def perceptron(data, labels, params = {}, hook = None):
                 theta = theta + y * x
                 theta_0 = theta_0 + y
                 if hook: hook((theta, theta_0))
-
-    print("MISTAKE COUNT " + str(m))
+    if(params.get('print',False)):
+        print("MISTAKE COUNT " + str(m))
     return theta, theta_0
 
 def perceptron_with_break(data, labels, params = {}, hook = None):
