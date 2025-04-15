@@ -1,3 +1,4 @@
+import numpy
 import numpy as np
 
 def cv(value_list):
@@ -87,3 +88,84 @@ print(ans)
 ans=package_ans(gradient_descent(f2, df2, cv([0., 0.]), lambda i: 0.01, 1000))
 print(ans)
 
+
+def num_grad(f, delta=0.001):
+    """
+    Returns a function that calculates the numerical gradient of f using
+    central differences. The function f should take a column vector (a 2D numpy array
+    with shape (n, 1)) and return a scalar value.
+
+    Parameters:
+      f     : The objective function.
+      delta : The small constant for finite differences (default is 0.001).
+
+    Returns:
+      A function that takes a column vector x and returns the estimated gradient,
+      also as a column vector.
+    """
+
+    def grad(x):
+        # Create an array to store the gradient estimates, preserving the shape of x.
+        grad_est = np.zeros_like(x)
+        n = x.shape[0]  # number of dimensions
+
+        # Compute the gradient for each component using central differences.
+        for i in range(n):
+            # Create a perturbation vector that is all zeros except in the i-th position.
+            perturb = np.zeros_like(x)
+            perturb[i, 0] = delta  # increment only the i-th component by delta
+
+            # Calculate the function values at x+perturb and x-perturb.
+            f_plus = f(x + perturb)
+            f_minus = f(x - perturb)
+
+            # Estimate the i-th component of the gradient.
+            grad_est[i, 0] = (f_plus - f_minus) / (2 * delta)
+
+        return grad_est
+
+    return grad
+
+def minimize(f, x0, step_size_fn, max_iter):
+    xs = [x0]
+    x = x0
+    fs = [f(x)]
+    df = num_grad(f)
+    for iter in range(max_iter):
+        gradient = df(x)
+        x = x - gradient * step_size_fn(iter + 1)
+        xs.append(x)
+        fs.append(f(x))
+
+    return x, fs, xs
+
+def hinge(v):
+    return np.maximum(0,1-v)
+
+# x is dxn, y is 1xn, th is dx1, th0 is 1x1
+def hinge_loss(x, y, th, th0):
+    return hinge(y* (np.dot(np.transpose(th),x) + th0))
+    pass
+
+# x is dxn, y is 1xn, th is dx1, th0 is 1x1, lam is a scalar
+def svm_obj(x, y, th, th0, lam):
+    average = np.average(hinge_loss(x,y,th,th0))
+    regularizor = lam * np.linalg.norm(th) ** 2
+    return average + regularizor
+
+def super_simple_separable():
+    X = np.array([[2, 3, 9, 12],
+                  [5, 2, 6, 5]])
+    y = np.array([[1, -1, 1, -1]])
+    return X, y
+
+sep_e_separator = np.array([[-0.40338351], [1.1849563]]), np.array([[-2.26910091]])
+
+# Test case 1
+x_1, y_1 = super_simple_separable()
+th1, th1_0 = sep_e_separator
+ans = svm_obj(x_1, y_1, th1, th1_0, .1)
+print(ans)
+# Test case 2
+ans = svm_obj(x_1, y_1, th1, th1_0, 0.0)
+print(ans)
