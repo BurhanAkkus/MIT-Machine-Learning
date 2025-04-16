@@ -1,3 +1,5 @@
+import time
+
 import numpy
 import numpy as np
 
@@ -239,9 +241,22 @@ def batch_svm_min(data, labels, lam):
     def df(th):
       return svm_obj_grad(data, labels, th[:-1, :], th[-1:,:], lam)
 
-    x, fs, xs = gradient_descent(f, df, init, svm_min_step_size_fn, 10)
+    x, fs, xs = gradient_descent(f, df, init, svm_min_step_size_fn, 10000)
     return x, fs, xs
 
+def batch_svm_minimize_numeric(data, labels, lam):
+    def svm_min_step_size_fn(i):
+       return 2/(i+1)**0.5
+    init = np.zeros((data.shape[0] + 1, 1))
+
+    def f(th):
+      return svm_obj(data, labels, th[:-1, :], th[-1:,:], lam)
+
+    def df(th):
+      return svm_obj_grad(data, labels, th[:-1, :], th[-1:,:], lam)
+
+    x, fs, xs = minimize(f, init, svm_min_step_size_fn, 10000)
+    return x, fs, xs
 def separable_medium():
     X = np.array([[2, -1, 1, 1],
                   [-2, 2, 2, -1]])
@@ -250,8 +265,17 @@ def separable_medium():
 sep_m_separator = np.array([[ 2.69231855], [ 0.67624906]]), np.array([[-3.02402521]])
 
 x_1, y_1 = super_simple_separable()
+start_time = time.time()
 ans = package_ans(batch_svm_min(x_1, y_1, 0.0001))
-print(ans)
+end_time = time.time()
+print(margin_min(x_1,y_1,ans[0][:-1],ans[0][-1]))
+print(end_time - start_time)
+
+start_time = time.time()
+ans = package_ans(batch_svm_minimize_numeric(x_1,y_1,0.0001))
+end_time = time.time()
+print(margin_min(x_1,y_1,ans[0][:-1],ans[0][-1]))
+print(end_time - start_time)
 x_1, y_1 = separable_medium()
 ans = package_ans(batch_svm_min(x_1, y_1, 0.0001))
 print(ans)
