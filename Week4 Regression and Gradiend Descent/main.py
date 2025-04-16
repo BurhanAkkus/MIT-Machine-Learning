@@ -225,3 +225,33 @@ print(d_svm_obj_th0(X2, y2, th2, th20, 0.01).tolist())
 
 print(svm_obj_grad(X2, y2, th2, th20, 0.01).tolist())
 print(svm_obj_grad(X2[:,0:1], y2[:,0:1], th2, th20, 0.01).tolist())
+
+#############################################################################
+
+def batch_svm_min(data, labels, lam):
+    def svm_min_step_size_fn(i):
+       return 2/(i+1)**0.5
+    init = np.zeros((data.shape[0] + 1, 1))
+
+    def f(th):
+      return svm_obj(data, labels, th[:-1, :], th[-1:,:], lam)
+
+    def df(th):
+      return svm_obj_grad(data, labels, th[:-1, :], th[-1:,:], lam)
+
+    x, fs, xs = gradient_descent(f, df, init, svm_min_step_size_fn, 10)
+    return x, fs, xs
+
+def separable_medium():
+    X = np.array([[2, -1, 1, 1],
+                  [-2, 2, 2, -1]])
+    y = np.array([[1, -1, 1, -1]])
+    return X, y
+sep_m_separator = np.array([[ 2.69231855], [ 0.67624906]]), np.array([[-3.02402521]])
+
+x_1, y_1 = super_simple_separable()
+ans = package_ans(batch_svm_min(x_1, y_1, 0.0001))
+print(ans)
+x_1, y_1 = separable_medium()
+ans = package_ans(batch_svm_min(x_1, y_1, 0.0001))
+print(ans)
