@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b0e9d1-9891-4142-94a0-6467bef7b315" name="Changes" comment="added cumulative_perceptron to the comparison. Averaged_perceptron is still better">
+    <list default="true" id="07b0e9d1-9891-4142-94a0-6467bef7b315" name="Changes" comment="Week 4 svm gradient descent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,15 +20,9 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Week4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,12 +50,87 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for code_for_hw3_part1.test_one_hot.executor&quot;: &quot;Debug&quot;,
     &quot;Python tests.Python tests in code_for_hw02_downloadable.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests in code_for_hw3_part2.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.hw3_part2_main.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.matplotlibtools.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Homework2&quot;
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RunManager" selected="Python.hw3_part2_main">
+    <configuration name="hw3_part2_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MIT Machine Learning" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code_and_data_for_hw3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code_and_data_for_hw3/hw3_part2_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MIT Machine Learning" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week4 Regression and Gradiend Descent" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week4 Regression and Gradiend Descent/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for code_for_hw3_part1.test_one_hot" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="MIT Machine Learning" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code_and_data_for_hw3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;code_for_hw3_part1.test_one_hot&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for code_for_hw3_part1.test_one_hot" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.hw3_part2_main" />
+        <item itemvalue="Python tests.Python tests for code_for_hw3_part1.test_one_hot" />
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -110,7 +179,127 @@
       <option name="project" value="LOCAL" />
       <updated>1742524606229</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="week 3 files">
+      <option name="closed" value="true" />
+      <created>1742570763357</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742570763358</updated>
+    </task>
+    <task id="LOCAL-00006" summary="part 1">
+      <option name="closed" value="true" />
+      <created>1742646088623</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742646088623</updated>
+    </task>
+    <task id="LOCAL-00007" summary="part 2 Review">
+      <option name="closed" value="true" />
+      <created>1744477111372</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744477111372</updated>
+    </task>
+    <task id="LOCAL-00008" summary="part 2 Review">
+      <option name="closed" value="true" />
+      <created>1744477115101</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744477115101</updated>
+    </task>
+    <task id="LOCAL-00009" summary="part 2 MNIST utils">
+      <option name="closed" value="true" />
+      <created>1744479217094</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744479217094</updated>
+    </task>
+    <task id="LOCAL-00010" summary="part 2 MNIST raw">
+      <option name="closed" value="true" />
+      <created>1744481365089</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744481365089</updated>
+    </task>
+    <task id="LOCAL-00011" summary="part 2 MNIST final">
+      <option name="closed" value="true" />
+      <created>1744489694163</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744489694163</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Week 4 initialization">
+      <option name="closed" value="true" />
+      <created>1744549095680</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744549095680</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Week 4 initialization">
+      <option name="closed" value="true" />
+      <created>1744632505332</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744632505332</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Week 4 gradient descent">
+      <option name="closed" value="true" />
+      <created>1744753894092</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744753894092</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Week 4 hinge loss">
+      <option name="closed" value="true" />
+      <created>1744758719484</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744758719484</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Week 4 svm derivative">
+      <option name="closed" value="true" />
+      <created>1744761295996</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1744761295996</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Week 4 svm gradient descent">
+      <option name="closed" value="true" />
+      <created>1744761861681</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1744761861681</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Week 4 svm gradient descent">
+      <option name="closed" value="true" />
+      <created>1744762282957</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744762282957</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Week 4 svm gradient descent">
+      <option name="closed" value="true" />
+      <created>1744762497038</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1744762497038</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +345,17 @@
     <MESSAGE value="Homework 2, Cumulative Perceptron and iterative Perceptron." />
     <MESSAGE value="Homework 2 completed" />
     <MESSAGE value="added cumulative_perceptron to the comparison. Averaged_perceptron is still better" />
-    <option name="LAST_COMMIT_MESSAGE" value="added cumulative_perceptron to the comparison. Averaged_perceptron is still better" />
+    <MESSAGE value="week 3 files" />
+    <MESSAGE value="part 1" />
+    <MESSAGE value="part 2 Review" />
+    <MESSAGE value="part 2 MNIST utils" />
+    <MESSAGE value="part 2 MNIST raw" />
+    <MESSAGE value="part 2 MNIST final" />
+    <MESSAGE value="Week 4 initialization" />
+    <MESSAGE value="Week 4 gradient descent" />
+    <MESSAGE value="Week 4 hinge loss" />
+    <MESSAGE value="Week 4 svm derivative" />
+    <MESSAGE value="Week 4 svm gradient descent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Week 4 svm gradient descent" />
   </component>
 </project>
