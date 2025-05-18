@@ -97,7 +97,6 @@ def d_lin_reg_th(x, th, th0):
     [[1.0, 2.0, 3.0, 4.0], [1.0, 1.0, 1.0, 1.0]]
     """
     #Your code here
-    return x
     pass
 
 def d_square_loss_th(x, y, th, th0):
@@ -123,7 +122,7 @@ def d_square_loss_th(x, y, th, th0):
 
     """
     #Your code here
-    return -2 * (y - lin_reg(x, th, th0)) * d_lin_reg_th(x, th, th0)
+    pass
 
 def d_mean_square_loss_th(x, y, th, th0):
     """ Returns the gradient of mean_square_loss(x, y, th, th0) with
@@ -144,7 +143,7 @@ def d_mean_square_loss_th(x, y, th, th0):
     # print("Y =", repr(Y))
     # print("th =", repr(th), "th0 =", repr(th0))
     #Your code here
-    return np.mean(d_square_loss_th(x, y, th, th0),axis = 1, keepdims = True)
+    pass
 
 def d_lin_reg_th0(x, th, th0):
     """ Returns the gradient of lin_reg(x, th, th0) with respect to th0.
@@ -155,7 +154,7 @@ def d_lin_reg_th0(x, th, th0):
     [[1.0, 1.0, 1.0, 1.0]]
     """
     #Your code here
-    return np.ones((1, x.shape[1]))
+    pass
 
 def d_square_loss_th0(x, y, th, th0):
     """ Returns the gradient of square_loss(x, y, th, th0) with
@@ -169,7 +168,8 @@ def d_square_loss_th0(x, y, th, th0):
     >>> d_square_loss_th0(X, Y, th, th0).tolist()
     [[4.1, 3.6999999999999993, 4.5, 3.9000000000000004]]
     """
-    return -2 * (y - lin_reg(x, th, th0))
+    #Your code here
+    pass
 
 def d_mean_square_loss_th0(x, y, th, th0):
     """ Returns the gradient of mean_square_loss(x, y, th, th0) with
@@ -182,7 +182,7 @@ def d_mean_square_loss_th0(x, y, th, th0):
     [[4.05]]
     """
     #Your code here
-    return np.mean(d_square_loss_th0(x, y, th, th0),axis = 1, keepdims = True)
+    pass
 
 def d_ridge_obj_th(x, y, th, th0, lam):
     """Return the derivative of tghe ridge objective value with respect
@@ -201,7 +201,7 @@ def d_ridge_obj_th(x, y, th, th0, lam):
     [[210.15], [14.05]]
     """
     #Your code here
-    return d_mean_square_loss_th(x, y, th, th0) + lam * th * 2
+    pass
 
 def d_ridge_obj_th0(x, y, th, th0, lam):
     """Return the derivative of tghe ridge objective value with respect
@@ -219,7 +219,7 @@ def d_ridge_obj_th0(x, y, th, th0, lam):
     >>> d_ridge_obj_th0(X, Y, th, th0, 100.).tolist()
     [[4.05]]
     """
-    return d_mean_square_loss_th0(x, y, th, th0)
+    #Your code here
     pass
 
 #Concatenates the gradients with respect to theta and theta_0
@@ -259,17 +259,7 @@ def sgd(X, y, J, dJ, w0, step_size_fn, max_iter):
 
     """
     #Your code here
-    fs = []
-    ws = []
-    for i in range(max_iter):
-        index = np.random.randint(X.shape[1])
-        x = cv(X[:, index])
-        Y = cv(y[:, index])
-        fs.append(J(x, Y, w0))
-        ws.append(w0)
-        w0 = w0 - step_size_fn(i) * dJ(x, Y, w0)
-
-    return ws[-1], fs, ws
+    pass
 
 ############################################################
 #From HW04; Used in the test case for sgd, below
@@ -506,62 +496,3 @@ def std_y(row):
     mu = np.mean(row, axis=1)
     sigma = np.sqrt(np.mean((row - mu)**2, axis=1))
     return np.array([(val - mu)/(1.0*sigma) for val in row]), mu, sigma
-'''
-X = np.array([[1., 2., 3., 4.], [1., 1., 1., 1.]])
-print(X.shape[1])
-print(np.ones((1, X.shape[1])))
-'''
-auto_data_all = load_auto_data('auto-mpg-regression.tsv')
-
-features1 = [('cylinders', standard),
-            ('displacement', standard),
-            ('horsepower', standard),
-            ('weight', standard),
-            ('acceleration', standard),
-            ('origin', one_hot)]
-
-features2 = [('cylinders', one_hot),
-            ('displacement', standard),
-            ('horsepower', standard),
-            ('weight', standard),
-            ('acceleration', standard)]
-features1_data = auto_data_and_values(auto_data_all, features1)
-features2_data = auto_data_and_values(auto_data_all, features2)
-features_data = [features1_data, features2_data]
-first_order = make_polynomial_feature_fun(1)
-second_order = make_polynomial_feature_fun(2)
-third_order = make_polynomial_feature_fun(3)
-orders = [first_order, second_order, third_order]
-lambda_1 = np.arange(0,0.1,0.01)
-lambda_2 = np.arange(0,0.1,0.01)
-lambda_3 = np.arange(0,200,20)
-lambdas = [lambda_1, lambda_2, lambda_3]
-'''
-print(np.shape(features1_data[0][:, :10]))
-print(np.shape(first_order(features1_data[0][:, :10])))
-print(np.shape(second_order(features1_data[0][:, :10])))
-print(features1_data[0][:, :3])
-print("###################################")
-print(second_order(features1_data[0][:, :3]))
-
-'''
-min = 9999999999999999
-min_values = ()      # σ is a length-1 array
-orders = [third_order]
-lambdas = [lambda_3]
-for feature_idx, feature_data in enumerate(features_data):
-    X, y_raw = feature_data  # or features2_data
-    y_std, mu_y, sigma_y = std_y(y_raw)
-    print("======================================")
-    for order_idx, order in enumerate(orders):
-        lambda_ = lambdas[order_idx]
-        print("###################")
-        for lam in lambda_:
-            rmse_std = xval_learning_alg(order(X), y_std, lam, 10)
-            rmse_mpg = rmse_std * sigma_y
-            print(feature_idx,order_idx,lam,rmse_mpg)
-            if(min > rmse_mpg):
-                min = rmse_mpg
-                min_values = (feature_idx,order_idx,lam)
-
-print(min_values)
