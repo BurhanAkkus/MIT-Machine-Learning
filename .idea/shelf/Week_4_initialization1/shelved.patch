@@ -1,0 +1,226 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"07b0e9d1-9891-4142-94a0-6467bef7b315\" name=\"Changes\" comment=\"added cumulative_perceptron to the comparison. Averaged_perceptron is still better\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PUSH_TAGS\">\r\n      <GitPushTagMode>\r\n        <option name=\"argument\" value=\"--tags\" />\r\n        <option name=\"title\" value=\"All\" />\r\n      </GitPushTagMode>\r\n    </option>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;BurhanAkkus&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/BurhanAkkus/MIT-Machine-Learning.git&quot;,\r\n    &quot;accountId&quot;: &quot;4e84be69-1c29-4600-8276-d0645d351718&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2uK9E1oZCNbqQb3BYMKZXKYOX74\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Python tests.Python tests in code_for_hw02_downloadable.py.executor&quot;: &quot;Debug&quot;,\r\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;Homework2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"07b0e9d1-9891-4142-94a0-6467bef7b315\" name=\"Changes\" comment=\"\" />\r\n      <created>1741986283559</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1741986283559</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Homework 1\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742433465723</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742433465723</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Homework 2, Cumulative Perceptron and iterative Perceptron.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742438829251</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742438829251</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Homework 2 completed\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742523954143</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742523954143</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"added cumulative_perceptron to the comparison. Averaged_perceptron is still better\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742524606229</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742524606229</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"master\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Homework 1\" />\r\n    <MESSAGE value=\"Homework 2, Cumulative Perceptron and iterative Perceptron.\" />\r\n    <MESSAGE value=\"Homework 2 completed\" />\r\n    <MESSAGE value=\"added cumulative_perceptron to the comparison. Averaged_perceptron is still better\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"added cumulative_perceptron to the comparison. Averaged_perceptron is still better\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 738ce9f014b6a9e95e5e55b7c9c1ef235f142ad8)
++++ b/.idea/workspace.xml	(date 1744632360564)
+@@ -4,8 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="07b0e9d1-9891-4142-94a0-6467bef7b315" name="Changes" comment="added cumulative_perceptron to the comparison. Averaged_perceptron is still better">
++    <list default="true" id="07b0e9d1-9891-4142-94a0-6467bef7b315" name="Changes" comment="Week 4 initialization">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Week4 Regression and Gradiend Descent/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week4 Regression and Gradiend Descent/main.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,17 +21,6 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
+-    <option name="PUSH_TAGS">
+-      <GitPushTagMode>
+-        <option name="argument" value="--tags" />
+-        <option name="title" value="All" />
+-      </GitPushTagMode>
+-    </option>
+-    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-      <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
+-      </map>
+-    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -56,12 +46,85 @@
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
++    &quot;Python tests.Python tests for code_for_hw3_part1.test_one_hot.executor&quot;: &quot;Debug&quot;,
+     &quot;Python tests.Python tests in code_for_hw02_downloadable.py.executor&quot;: &quot;Debug&quot;,
++    &quot;Python tests.Python tests in code_for_hw3_part2.py.executor&quot;: &quot;Debug&quot;,
++    &quot;Python.hw3_part2_main.executor&quot;: &quot;Run&quot;,
+     &quot;Python.main.executor&quot;: &quot;Run&quot;,
++    &quot;Python.matplotlibtools.executor&quot;: &quot;Debug&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;Homework2&quot;
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+   }
+ }</component>
++  <component name="RunManager" selected="Python.main">
++    <configuration name="hw3_part2_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="MIT Machine Learning" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code_and_data_for_hw3" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code_and_data_for_hw3/hw3_part2_main.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="MIT Machine Learning" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week4 Regression and Gradiend Descent" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week4 Regression and Gradiend Descent/main.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration name="Python tests for code_for_hw3_part1.test_one_hot" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
++      <module name="MIT Machine Learning" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code_and_data_for_hw3" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="_new_additionalArguments" value="&quot;&quot;" />
++      <option name="_new_target" value="&quot;code_for_hw3_part1.test_one_hot&quot;" />
++      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Python.main" />
++        <item itemvalue="Python.hw3_part2_main" />
++        <item itemvalue="Python tests.Python tests for code_for_hw3_part1.test_one_hot" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+@@ -110,7 +173,71 @@
+       <option name="project" value="LOCAL" />
+       <updated>1742524606229</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="week 3 files">
++      <option name="closed" value="true" />
++      <created>1742570763357</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1742570763358</updated>
++    </task>
++    <task id="LOCAL-00006" summary="part 1">
++      <option name="closed" value="true" />
++      <created>1742646088623</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1742646088623</updated>
++    </task>
++    <task id="LOCAL-00007" summary="part 2 Review">
++      <option name="closed" value="true" />
++      <created>1744477111372</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1744477111372</updated>
++    </task>
++    <task id="LOCAL-00008" summary="part 2 Review">
++      <option name="closed" value="true" />
++      <created>1744477115101</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1744477115101</updated>
++    </task>
++    <task id="LOCAL-00009" summary="part 2 MNIST utils">
++      <option name="closed" value="true" />
++      <created>1744479217094</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1744479217094</updated>
++    </task>
++    <task id="LOCAL-00010" summary="part 2 MNIST raw">
++      <option name="closed" value="true" />
++      <created>1744481365089</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1744481365089</updated>
++    </task>
++    <task id="LOCAL-00011" summary="part 2 MNIST final">
++      <option name="closed" value="true" />
++      <created>1744489694163</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1744489694163</updated>
++    </task>
++    <task id="LOCAL-00012" summary="Week 4 initialization">
++      <option name="closed" value="true" />
++      <created>1744549095680</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1744549095680</updated>
++    </task>
++    <option name="localTasksCounter" value="13" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -156,6 +283,24 @@
+     <MESSAGE value="Homework 2, Cumulative Perceptron and iterative Perceptron." />
+     <MESSAGE value="Homework 2 completed" />
+     <MESSAGE value="added cumulative_perceptron to the comparison. Averaged_perceptron is still better" />
+-    <option name="LAST_COMMIT_MESSAGE" value="added cumulative_perceptron to the comparison. Averaged_perceptron is still better" />
++    <MESSAGE value="week 3 files" />
++    <MESSAGE value="part 1" />
++    <MESSAGE value="part 2 Review" />
++    <MESSAGE value="part 2 MNIST utils" />
++    <MESSAGE value="part 2 MNIST raw" />
++    <MESSAGE value="part 2 MNIST final" />
++    <MESSAGE value="Week 4 initialization" />
++    <option name="LAST_COMMIT_MESSAGE" value="Week 4 initialization" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Week4 Regression and Gradiend Descent/main.py</url>
++          <line>3</line>
++          <option name="timeStamp" value="42" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
